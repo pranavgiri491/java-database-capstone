@@ -1,9 +1,9 @@
-**MySQL Database Design**
+# Healthcare System Database Schema Design
 
-Patients Table
+## MySQL Database Design
 
-sql
-
+### Patients Table
+```sql
 CREATE TABLE patients (
     patient_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
@@ -19,9 +19,10 @@ CREATE TABLE patients (
     INDEX idx_email (email),
     INDEX idx_name (last_name, first_name)
 ) ENGINE=InnoDB;
+```
 
-**Doctors Table**
-sql
+### Doctors Table
+```sql
 CREATE TABLE doctors (
     doctor_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
@@ -37,9 +38,10 @@ CREATE TABLE doctors (
     INDEX idx_specialization (specialization),
     INDEX idx_availability (is_available)
 ) ENGINE=InnoDB;
+```
 
-**Appointments Table**
-sql
+### Appointments Table
+```sql
 CREATE TABLE appointments (
     appointment_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT NOT NULL,
@@ -57,10 +59,10 @@ CREATE TABLE appointments (
     INDEX idx_status (status),
     UNIQUE KEY unique_doctor_timeslot (doctor_id, appointment_date, appointment_time)
 ) ENGINE=InnoDB;
+```
 
-**Admin Table**
-sql
-
+### Admin Table
+```sql
 CREATE TABLE admin (
     admin_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -76,11 +78,14 @@ CREATE TABLE admin (
     INDEX idx_role (role),
     INDEX idx_username (username)
 ) ENGINE=InnoDB;
+```
 
-**MongoDB Collection Design**
+---
 
-Prescriptions Collection
-json
+## MongoDB Collection Design
+
+### Prescriptions Collection
+```json
 {
   "_id": ObjectId("507f1f77bcf86cd799439011"),
   "patient_id": 12345,
@@ -114,45 +119,33 @@ json
   "created_at": ISODate("2023-10-28T10:35:00Z"),
   "updated_at": ISODate("2023-10-28T10:35:00Z")
 }
-Design Justification
+```
 
-**MySQL Design Decisions:**
+---
 
-*Used InnoDB engine for transaction support and foreign key constraints
+## Design Justification
 
-*Added indexes on frequently queried columns (email, names, status) for performance
+### MySQL Design Decisions
+- Used InnoDB engine for transaction support and foreign key constraints
+- Added indexes on frequently queried columns (email, names, status) for performance
+- Used ENUM types for fields with limited valid values (status, role)
+- Included created_at and updated_at timestamps for auditing
+- Set up appropriate foreign key relationships with ON DELETE CASCADE to maintain referential integrity
+- Used VARCHAR with appropriate lengths to balance storage efficiency and flexibility
 
-*Used ENUM types for fields with limited valid values (status, role)
+### MongoDB Design Decisions
+- Used embedded arrays for medications to keep related data together
+- Included references to relational database IDs (patient_id, doctor_id) for cross-database relationships
+- Used ISO dates for consistent date handling
+- Added pharmacy preferences as a nested document for denormalized but related data
+- Included both medical and administrative data in the same document for complete prescription context
 
-*Included created_at and updated_at timestamps for auditing
+---
 
-*Set up appropriate foreign key relationships with ON DELETE CASCADE to maintain referential integrity
-
-*Used VARCHAR with appropriate lengths to balance storage efficiency and flexibility
-
-**MongoDB Design Decisions:**
-
-*Used embedded arrays for medications to keep related data together
-
-*Included references to relational database IDs (patient_id, doctor_id) for cross-database relationships
-
-*Used ISO dates for consistent date handling
-
-*Added pharmacy preferences as a nested document for denormalized but related data
-
-Included both medical and administrative data in the same document for complete prescription context
-
-This design supports the healthcare appointment system by providing:
-
-Efficient patient and doctor management
-
-Robust appointment scheduling with conflict prevention
-
-Secure admin access control
-
-Flexible prescription management with detailed medication information
-
-Audit trails through timestamp fields
-
-Performance optimization through appropriate indexing
-
+## System Support Benefits
+- Efficient patient and doctor management
+- Robust appointment scheduling with conflict prevention
+- Secure admin access control
+- Flexible prescription management with detailed medication information
+- Audit trails through timestamp fields
+- Performance optimization through appropriate indexing
