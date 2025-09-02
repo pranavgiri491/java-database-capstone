@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/patientDashboard.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <main>
+    <h2>Patient Dashboard</h2>
+    <p>Welcome to your dashboard. Select an option:</p>
+    <ul>
+      <li><a href="patientAppointments.html">View Appointments</a></li>
+      <li><a href="patientRecord.html">View Medical Records</a></li>
+      <li><a href="updateAppointment.html">Update Appointment</a></li>
+    </ul>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../js/components/header.js"></script>
+  <script src="../js/components/footer.js"></script>
+  <script>
+    renderHeader();
+    renderFooter();
+  </script>
+</body>
+</html>

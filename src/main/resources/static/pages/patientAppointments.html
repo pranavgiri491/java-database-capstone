@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Appointments</title>
+  <link rel="stylesheet" href="../assets/css/patientDashboard.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <main>
+    <h2>Your Appointments</h2>
+    <table id="appointmentsTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Doctor</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="appointmentRows"></tbody>
+    </table>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../js/components/header.js"></script>
+  <script src="../js/components/footer.js"></script>
+  <script src="../js/patientAppointment.js"></script>
+  <script>
+    renderHeader();
+    renderFooter();
+  </script>
+</body>
+</html>

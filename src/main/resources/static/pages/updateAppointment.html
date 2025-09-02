@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Appointment</title>
+  <link rel="stylesheet" href="../assets/css/updateAppointment.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <main>
+    <h2>Update Appointment</h2>
+    <form id="updateForm">
+      <label for="appointmentId">Appointment ID:</label>
+      <input type="text" id="appointmentId" required>
+
+      <label for="date">New Date:</label>
+      <input type="date" id="date" required>
+
+      <label for="status">Status:</label>
+      <select id="status">
+        <option value="Scheduled">Scheduled</option>
+        <option value="Completed">Completed</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+
+      <button type="submit" class="btn">Update</button>
+    </form>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../js/components/header.js"></script>
+  <script src="../js/components/footer.js"></script>
+  <script src="../js/updateAppointment.js"></script>
+  <script>
+    renderHeader();
+    renderFooter();
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logged Patient Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/patientDashboard.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <main class="dashboard">
+    <h2>Welcome, Patient</h2>
+    <div class="card-grid">
+      <a href="patientAppointments.html" class="card">Appointments</a>
+      <a href="patientRecord.html" class="card">Medical Records</a>
+      <a href="updateAppointment.html" class="card">Update Appointment</a>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../js/components/header.js"></script>
+  <script src="../js/components/footer.js"></script>
+  <script src="../js/patientDashboard.js"></script>
+  <script>
+    renderHeader();
+    renderFooter();
+  </script>
+</body>
+</html>

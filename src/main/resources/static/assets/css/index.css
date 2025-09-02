@@ -1,0 +1,25 @@
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.hero .logo {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

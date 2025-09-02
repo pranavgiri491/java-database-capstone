@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Dashboard</title>
+ <link rel="stylesheet" href="/assets/css/doctorDashboard.css">
+<link rel="stylesheet" th:href="@{/assets/css/doctorDashboard.css}">
+
+  <link rel="stylesheet" href="/assets/css/doctorDashboard.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <main>
+    <h2>Doctor Dashboard</h2>
+    <div class="card-grid">
+      <a href="/pages/addPrescription.html" class="card">Add Prescription</a>
+      <a href="/pages/patientRecord.html" class="card">View Patient Records</a>
+      <a href="/pages/patientAppointments.html" class="card">View Appointments</a>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="/js/components/header.js"></script>
+  <script src="/js/components/footer.js"></script>
+  <script src="/js/doctorDashboard.js"></script>
+  <script>
+    renderHeader();
+    renderFooter();
+  </script>
+</body>
+</html>
