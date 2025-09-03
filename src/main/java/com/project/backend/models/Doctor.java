@@ -1,10 +1,21 @@
-package com.project.back_end.models;
+package com.project.backend.models;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
+
+import org.hibernate.annotations.processing.Pattern;
+
 import java.util.ArrayList;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "doctors")
@@ -30,7 +41,7 @@ public class Doctor {
     private String email;
 
     @NotNull(message = "Password is required")
-    @Size(min = 6, message = "Password must be at least 6 characters")
+    @Size(min = 6, message = "Password must be at least 6 characters", max = 0)
     @Column(nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
