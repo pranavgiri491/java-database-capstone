@@ -1,5 +1,5 @@
 package com.project.backend.repository;
 
-public class atientRepository {
+public class PatientRepository {
     
 }
