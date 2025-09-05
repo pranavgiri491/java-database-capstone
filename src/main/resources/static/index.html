@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -32,5 +32,595 @@
     renderHeader();
     renderFooter();
   </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare - Medical Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: var(--primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .feature-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            padding: 0.6rem 1.5rem;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .stats-section {
+            background-color: var(--light);
+            padding: 3rem 0;
+            border-radius: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .login-container {
+            max-width: 400px;
+            margin: 5rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        
+        .dashboard-card {
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+        
+        .appointment-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .badge-success {
+            background-color: var(--success);
+        }
+        
+        .badge-warning {
+            background-color: var(--warning);
+        }
+        
+        .badge-danger {
+            background-color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-hospital-alt me-2"></i>MediCare System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-outline-light" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">Advanced Medical Management System</h1>
+            <p class="lead mb-4">Streamlining healthcare management for patients, doctors, and administrators</p>
+            <a href="#" class="btn btn-light btn-lg px-4">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container mb-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Key Features</h2>
+            <p class="lead text-muted">Comprehensive tools for all healthcare stakeholders</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
+                        <h4 class="card-title">Patient Dashboard</h4>
+                        <p class="card-text">Manage appointments, view medical records, and communicate with healthcare providers.</p>
+                        <a href="#" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h4 class="card-title">Doctor Dashboard</h4>
+                        <p class="card-text">Access patient records, manage appointments, and write prescriptions efficiently.</p>
+                        <a href="#" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h4 class="card-title">Admin Dashboard</h4>
+                        <p class="card-text">Manage users, appointments, and system configurations with powerful admin tools.</p>
+                        <a href="#" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-number">5,000+</div>
+                    <p class="text-muted">Patients Served</p>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-number">150+</div>
+                    <p class="text-muted">Medical Professionals</p>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">98%</div>
+                    <p class="text-muted">Satisfaction Rate</p>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">24/7</div>
+                    <p class="text-muted">Support Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview -->
+    <section class="container my-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Role-Based Dashboards</h2>
+            <p class="lead text-muted">Tailored interfaces for different user roles</p>
+        </div>
+        
+        <ul class="nav nav-pills justify-content-center mb-4" id="dashboardTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="patient-tab" data-bs-toggle="pill" data-bs-target="#patient">Patient</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="doctor-tab" data-bs-toggle="pill" data-bs-target="#doctor">Doctor</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="admin-tab" data-bs-toggle="pill" data-bs-target="#admin">Administrator</button>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="dashboardTabContent">
+            <div class="tab-pane fade show active" id="patient">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card dashboard-card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-calendar-check dashboard-icon me-2"></i>Appointment Management</h5>
+                                <p class="card-text">Schedule, view, and manage your appointments with healthcare providers.</p>
+                                <div class="appointment-list mt-4">
+                                    <div class="d-flex justify-content-between align-items-center p-3 border rounded mb-2">
+                                        <div>
+                                            <h6 class="mb-0">Dr. Sarah Johnson</h6>
+                                            <small class="text-muted">Cardiology</small>
+                                        </div>
+                                        <div>
+                                            <span class="badge badge-success">Confirmed</span>
+                                            <p class="mb-0">Tomorrow, 10:30 AM</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center p-3 border rounded">
+                                        <div>
+                                            <h6 class="mb-0">Dr. Michael Chen</h6>
+                                            <small class="text-muted">Dermatology</small>
+                                        </div>
+                                        <div>
+                                            <span class="badge badge-warning">Pending</span>
+                                            <p class="mb-0">June 15, 2:00 PM</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card dashboard-card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-file-medical dashboard-icon me-2"></i>Medical Records</h5>
+                                <p class="card-text">Access your medical history, test results, and treatment plans.</p>
+                                <div class="mt-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h6 class="mb-0">Recent Records</h6>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Blood Test Results
+                                            <span class="badge bg-primary rounded-pill">15 May 2023</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Cardiology Consultation
+                                            <span class="badge bg-primary rounded-pill">2 May 2023</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Prescription Renewal
+                                            <span class="badge bg-primary rounded-pill">28 Apr 2023</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="doctor">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card dashboard-card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-clock dashboard-icon me-2"></i>Today's Appointments</h5>
+                                <p class="card-text">Manage your daily schedule and patient appointments.</p>
+                                <div class="appointment-list mt-4">
+                                    <div class="d-flex justify-content-between align-items-center p-3 border rounded mb-2">
+                                        <div>
+                                            <h6 class="mb-0">John Smith</h6>
+                                            <small class="text-muted">Follow-up Consultation</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge badge-success">10:30 AM</span>
+                                            <p class="mb-0">Room 205</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center p-3 border rounded mb-2">
+                                        <div>
+                                            <h6 class="mb-0">Emily Johnson</h6>
+                                            <small class="text-muted">New Patient</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge badge-success">11:45 AM</span>
+                                            <p class="mb-0">Room 205</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center p-3 border rounded">
+                                        <div>
+                                            <h6 class="mb-0">Robert Brown</h6>
+                                            <small class="text-muted">Routine Checkup</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge badge-success">2:15 PM</span>
+                                            <p class="mb-0">Room 207</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card dashboard-card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-prescription dashboard-icon me-2"></i>Prescription Management</h5>
+                                <p class="card-text">Create and manage patient prescriptions electronically.</p>
+                                <div class="mt-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h6 class="mb-0">Recent Prescriptions</h6>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Create New</a>
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <div class="d-flex justify-content-between">
+                                                <span>Amoxicillin 500mg</span>
+                                                <small class="text-muted">John Smith</small>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="d-flex justify-content-between">
+                                                <span>Lisinopril 10mg</span>
+                                                <small class="text-muted">Mary Williams</small>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="d-flex justify-content-between">
+                                                <span>Metformin 850mg</span>
+                                                <small class="text-muted">James Wilson</small>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="admin">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card dashboard-card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-users dashboard-icon me-2"></i>User Management</h5>
+                                <p class="card-text">Manage system users, roles, and permissions.</p>
+                                <div class="mt-4">
+                                    <div class="row text-center">
+                                        <div class="col-4">
+                                            <div class="stat-number">1,250</div>
+                                            <small class="text-muted">Patients</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="stat-number">75</div>
+                                            <small class="text-muted">Doctors</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="stat-number">12</div>
+                                            <small class="text-muted">Admins</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-grid gap-2 mt-4">
+                                        <button class="btn btn-outline-primary">Manage Users</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card dashboard-card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-chart-bar dashboard-icon me-2"></i>System Analytics</h5>
+                                <p class="card-text">View system usage statistics and performance metrics.</p>
+                                <div class="mt-4">
+                                    <div class="mb-3">
+                                        <h6>Appointments This Month <span class="badge bg-primary">427</span></h6>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6>New Patients <span class="badge bg-primary">83</span></h6>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 45%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6>System Uptime <span class="badge bg-primary">99.8%</span></h6>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 99.8%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>MediCare System</h5>
+                    <p>Comprehensive healthcare management solution for medical professionals and patients.</p>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Services</a></li>
+                        <li><a href="#" class="text-white">Doctors</a></li>
+                        <li><a href="#" class="text-white">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Medical Drive, Healthcare City</li>
+                        <li><i class="fas fa-phone me-2"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@medicaresystem.com</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Follow Us</h5>
+                    <div class="d-flex">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 MediCare System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login to MediCare System</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember">
+                            <label class="form-check-label" for="remember">Remember me</label>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p class="mb-0">Don't have an account? <a href="#">Contact administrator</a></p>
+                        <p><a href="#">Forgot password?</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple JavaScript for demo purposes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const triggerTabList = document.querySelectorAll('#dashboardTab button')
+            triggerTabList.forEach(triggerEl => {
+                triggerEl.addEventListener('click', event => {
+                    event.preventDefault()
+                    const tab = new bootstrap.Tab(triggerEl)
+                    tab.show()
+                })
+            })
+            
+            // Simulate login form submission
+            const loginForm = document.querySelector('#loginModal form')
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault()
+                    alert('Login functionality would be implemented with Spring Security in the full application.')
+                    bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide()
+                })
+            }
+        })
+    </script>
 </body>
 </html>
